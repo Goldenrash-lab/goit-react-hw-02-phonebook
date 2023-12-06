@@ -25,6 +25,7 @@ export class App extends Component {
       contacts: [
         ...prevState.contacts,
         {
+          id: crypto.randomUUID(),
           name,
           number,
         },
