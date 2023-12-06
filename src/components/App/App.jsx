@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ContactForm from './ContactForm/ContactForm';
-import ContactsList from './ContactsList/ContactsList';
-import SearchContact from './SearchContact/SearchContact';
+import ContactForm from '../ContactForm/ContactForm';
+import ContactsList from '../ContactsList/ContactsList';
+import SearchContact from '../SearchContact/SearchContact';
+import { AppWrapper, PhoneBook } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -48,23 +49,21 @@ export class App extends Component {
   };
   render() {
     return (
-      <div
-        style={{
-          padding: '50px',
-        }}
-      >
-        <h3>Phonebook</h3>
-        <ContactForm onContactAdd={this.handlerAddContact} />
-        <h3>Contacts</h3>
-        <SearchContact
-          value={this.state.filter}
-          onSearch={this.handlerSearch}
-        />
-        <ContactsList
-          onDelete={this.handleDelete}
-          contacts={this.filterContacts()}
-        />
-      </div>
+      <AppWrapper>
+        <PhoneBook>
+          <h3>Phonebook</h3>
+          <ContactForm onContactAdd={this.handlerAddContact} />
+          <h3>Contacts</h3>
+          <SearchContact
+            value={this.state.filter}
+            onSearch={this.handlerSearch}
+          />
+          <ContactsList
+            onDelete={this.handleDelete}
+            contacts={this.filterContacts()}
+          />
+        </PhoneBook>
+      </AppWrapper>
     );
   }
 }
